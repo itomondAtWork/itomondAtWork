@@ -3,3 +3,4 @@ hdbcli==2.20.15
 langchain==0.1.17
 langchain_openai==0.1.5
 langchain_community==0.0.36
+python-dotenv==1.0.1
