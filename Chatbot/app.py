@@ -2,7 +2,7 @@ import os
 import tempfile
 import streamlit as st
 from hdbcli import dbapi
-# from streamlit_chat import message
+from streamlit_chat import message
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain.chains import ConversationalRetrievalChain
 from langchain.memory import ConversationBufferMemory
@@ -139,8 +139,8 @@ def display_interface(chain):
     if st.session_state['generated']:
         with response_container:
             for i in range(len(st.session_state['generated'])):
-                st.chat_message(st.session_state['past'][i], is_user=True, key=str(i) + '_user', avatar_style="big-smile")
-                st.chat_message(st.session_state['generated'][i], key=str(i), avatar_style="thumbs")
+                message(st.session_state['past'][i], is_user=True, key=str(i) + '_user', avatar_style="big-smile")
+                message(st.session_state['generated'][i], key=str(i), avatar_style="thumbs")
 
 def run_conversational_chat(chain, query):
     """Runs the conversational chat and returns the result."""
