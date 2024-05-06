@@ -11,7 +11,44 @@ from langchain_community.vectorstores.hanavector import HanaDB
 from langchain_core.prompts import PromptTemplate
 from dotenv import load_dotenv
 
+def set_custom_styles():
+    custom_css = """
+    <style>
+        .stButton>button {
+            width: 100%;
+            border-radius: 20px;
+            font-size: 25px;
+            padding: 10px 24px;
+            background-color: #FF4B4B; /* ボタンの背景色 */
+            color: white; /* ボタンの文字色 */
+        }
+        .stTextInput>div>div>input {
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .css-1d391kg {
+            padding: 10px 20px 20px;
+        }
+        /* チャットメッセージ用のカスタムスタイル */
+        .message-user {
+            background-color: #D0F0C0; /* ユーザーメッセージの背景色 */
+            padding: 10px;
+            border-radius: 15px;
+            margin: 5px;
+        }
+        .message-bot {
+            background-color: #F0D0FF; /* ボットメッセージの背景色 */
+            padding: 10px;
+            border-radius: 15px;
+            margin: 5px;
+        }
+    </style>
+    """
+    st.markdown(custom_css, unsafe_allow_html=True)
+
 def main():
+    set_custom_styles()
     # Load environment variables
     load_dotenv()
 
@@ -125,6 +162,8 @@ def display_interface(chain):
     response_container = st.container()
     container = st.container()
 
+    set_custom_styles()  # スタイル設定関数の呼び出し
+
     with container:
         with st.form(key='chat_form', clear_on_submit=True):
             user_input = st.text_input("Input:", placeholder="Please enter your message regarding the PDF data.", key='input')
@@ -139,8 +178,9 @@ def display_interface(chain):
     if st.session_state['generated']:
         with response_container:
             for i in range(len(st.session_state['generated'])):
-                message(st.session_state['past'][i], is_user=True, key=str(i) + '_user', avatar_style="big-smile")
-                message(st.session_state['generated'][i], key=str(i), avatar_style="thumbs")
+                st.markdown(f'<div class="message-user">😊 {st.session_state['past'][i]}</div>', unsafe_allow_html=True)
+                st.markdown(f'<div class="message-bot">🤖 {st.session_state['generated'][i]}</div>', unsafe_allow_html=True)
+
 
 def run_conversational_chat(chain, query):
     """Runs the conversational chat and returns the result."""
