@@ -48,7 +48,7 @@ def initialize_database():
         autocommit=True,
         sslValidateCertificate=False,
     )
-    embeddings = OpenAIEmbeddings()
+    embeddings = OpenAIEmbeddings(model="text-embedding-3-large")
 
     db = HanaDB(
         connection=connection,
@@ -74,7 +74,7 @@ def process_pdfs(uploaded_files, db):
 def setup_chain(db):
     """Sets up the conversation chain and returns it."""
     llm = ChatOpenAI(
-        model="gpt-3.5-turbo-1106",
+        model="gpt-4-turbo",
         temperature=0.2,
         api_key=os.getenv('OPENAI_API_KEY')
     )
