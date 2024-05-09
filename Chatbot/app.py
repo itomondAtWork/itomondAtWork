@@ -6,7 +6,8 @@ from streamlit_chat import message
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain.chains import ConversationalRetrievalChain
 from langchain.memory import ConversationBufferMemory
-from langchain_community.document_loaders import PyPDFLoader
+from langchain_community.document_loaders import PyPDFLoader, WebBaseLoader
+from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores.hanavector import HanaDB
 from langchain_core.prompts import PromptTemplate
 from dotenv import load_dotenv
@@ -49,34 +50,48 @@ def set_custom_styles():
 
 def main():
     set_custom_styles()
-    # Load environment variables
     load_dotenv()
 
-    # Initialize OpenAI API key
     user_api_key = os.getenv('OPENAI_API_KEY')
     os.environ['OPENAI_API_KEY'] = user_api_key
 
-    # Initialize database connection
     connection, db = initialize_database()
 
-    # Set up the Streamlit sidebar for PDF uploads
     uploaded_files = st.sidebar.file_uploader("Upload PDFs", type="pdf", accept_multiple_files=True)
+    webpage_urls = st.sidebar.text_area("Enter webpage URLs to load content", placeholder="https://example.com\nhttps://example2.com")
+    url_list = st.session_state.get('url_list', [])
 
-    # Process uploaded files if any
+    if st.sidebar.button('Add URL'):
+        if webpage_urls:
+            url_list.extend(webpage_urls.split())
+            st.session_state['url_list'] = url_list
+            webpage_urls = ""  # Clear the text area
+
+    url_container = st.sidebar.container()
+    for i, url in enumerate(url_list):
+        col1, col2 = url_container.columns([0.8, 0.2])
+        col1.write(url)
+        if col2.button("Remove", key=f'remove-{i}'):
+            url_list.remove(url)
+            st.session_state['url_list'] = url_list
+
     if uploaded_files:
         process_pdfs(uploaded_files, db)
+    if url_list:
+        for url in url_list:
+            process_webpage(url, db)
 
-        # Set up conversation chain
-        chain = setup_chain(db)
+    chain = setup_chain(db)
+    initialize_session_state()
+    display_interface(chain)
 
-        # Initialize session state
-        initialize_session_state()
-
-        # Display the chat interface
-        display_interface(chain)
+def process_webpage(url, db):
+    loader = WebBaseLoader(url)
+    loader.requests_kwargs = {'verify': False}
+    text = loader.load()
+    db.add_documents(text)
 
 def initialize_database():
-    """Initializes the database connection and returns the connection and db objects."""
     connection = dbapi.connect(
         address=os.getenv("HANA_DB_ADDRESS"),
         port=os.getenv("HANA_DB_PORT"),
@@ -86,56 +101,44 @@ def initialize_database():
         sslValidateCertificate=False,
     )
     embeddings = OpenAIEmbeddings(model="text-embedding-3-large")
-
     db = HanaDB(
         connection=connection,
         embedding=embeddings,
         table_name="ITO_DEMO_RETRIEVAL_CHAIN",
     )
-
-    # Clear existing entries
     db.delete(filter={})
     return connection, db
 
 def process_pdfs(uploaded_files, db):
-    """Processes the uploaded PDFs and adds them to the database."""
     for uploaded_file in uploaded_files:
         with tempfile.NamedTemporaryFile(delete=False) as tmp_file:
             tmp_file.write(uploaded_file.getvalue())
             tmp_file_path = tmp_file.name
-
         loader = PyPDFLoader(file_path=tmp_file_path)
         documents = loader.load()
         db.add_documents(documents)
 
 def setup_chain(db):
-    """Sets up the conversation chain and returns it."""
     llm = ChatOpenAI(
         model="gpt-4-turbo",
         temperature=0.2,
         api_key=os.getenv('OPENAI_API_KEY')
     )
-
     prompt_template = """
     You are a helpful advisor. Context related to the prompt is provided.
     Please answer it by referring to the chat history, but also referring to the following context.
     ```
     {context}
     ```
-
     Chat History: {chat_history}
-
     Question: {question}
     """
-
     PROMPT = PromptTemplate(
         template=prompt_template, input_variables=["context", "chat_history", "question"]
     )
-
     memory = ConversationBufferMemory(
         memory_key="chat_history", output_key="answer", return_messages=True
     )
-
     chain = ConversationalRetrievalChain.from_llm(
         llm,
         db.as_retriever(),
@@ -147,43 +150,32 @@ def setup_chain(db):
     return chain
 
 def initialize_session_state():
-    """Initializes Streamlit session state."""
     if 'history' not in st.session_state:
         st.session_state['history'] = []
-
     if 'generated' not in st.session_state:
-        st.session_state['generated'] = ["Hello! Feel free to ask about anything regarding the uploaded PDFs"]
-
+        st.session_state['generated'] = ["Hello! Feel free to ask about anything regarding the uploaded PDFs or webpage content."]
     if 'past' not in st.session_state:
         st.session_state['past'] = ["Hi!"]
 
 def display_interface(chain):
-    """Displays the chat interface."""
     response_container = st.container()
     container = st.container()
-
-    set_custom_styles()  # スタイル設定関数の呼び出し
-
+    set_custom_styles()
     with container:
         with st.form(key='chat_form', clear_on_submit=True):
-            user_input = st.text_input("Input:", placeholder="Please enter your message regarding the PDF data.", key='input')
+            user_input = st.text_input("Input:", placeholder="Please enter your message.", key='input')
             submit_button = st.form_submit_button(label='Send')
-
         if submit_button and user_input:
             output = run_conversational_chat(chain, user_input)
             st.session_state['past'].append(user_input)
             st.session_state['generated'].append(output)
-
-    # Display chat history
     if st.session_state['generated']:
         with response_container:
             for i in range(len(st.session_state['generated'])):
                 st.markdown(f'<div class="message-user">😊 {st.session_state['past'][i]}</div>', unsafe_allow_html=True)
                 st.markdown(f'<div class="message-bot">🤖 {st.session_state['generated'][i]}</div>', unsafe_allow_html=True)
 
-
 def run_conversational_chat(chain, query):
-    """Runs the conversational chat and returns the result."""
     result = chain({"question": query, "chat_history": st.session_state['history']})
     st.session_state['history'].append((query, result["answer"]))
     return result["answer"]
