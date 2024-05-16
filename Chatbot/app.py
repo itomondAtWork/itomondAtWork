@@ -172,8 +172,8 @@ def display_interface(chain):
     if st.session_state['generated']:
         with response_container:
             for i in range(len(st.session_state['generated'])):
-                st.markdown(f'<div class="message-user">😊 {st.session_state['past'][i]}</div>', unsafe_allow_html=True)
-                st.markdown(f'<div class="message-bot">🤖 {st.session_state['generated'][i]}</div>', unsafe_allow_html=True)
+                st.markdown(f'<div class="message-user">😊 {st.session_state["past"][i]}</div>', unsafe_allow_html=True)
+                st.markdown(f'<div class="message-bot">🤖 {st.session_state["generated"][i]}</div>', unsafe_allow_html=True)
 
 def run_conversational_chat(chain, query):
     result = chain({"question": query, "chat_history": st.session_state['history']})
