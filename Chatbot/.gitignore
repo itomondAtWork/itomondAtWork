@@ -15,3 +15,4 @@ data
 # その他の無視したいファイルやディレクトリ
 *.log
 *.sqlite3
+src/test.ipynb

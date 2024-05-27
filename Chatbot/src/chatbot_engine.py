@@ -49,6 +49,8 @@ def setup_chain(db, proxy_client):
     prompt_template = """
     You are a technical advisor. You should respond with reference to the context and Chat History.
     If a user visits you in English, please reply in English, and if a user visits you in Japanese, please reply in Japanese.
+    If you don't understand, please don't force yourself to say you don't understand.
+
     Context:
     ```
     {context}
@@ -79,7 +81,6 @@ def initialize_session_state():
 def run_conversational_chat(chain, query, chat_history):
     # チェーンにクエリを投げて結果を取得
     result = chain({"question": query, "chat_history": chat_history})
-    print("Chain Result:", result)
 
     # 新しいメッセージをチャット履歴に追加
     chat_history.append((query, result.get("answer", "No valid response found")))
