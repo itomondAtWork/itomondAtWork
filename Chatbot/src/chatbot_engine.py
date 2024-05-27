@@ -47,8 +47,9 @@ def connect_database(proxy_client):
 def setup_chain(db, proxy_client):
     llm = ChatOpenAI(deployment_id=os.getenv('LLM_DEPLOYMENT_ID'), proxy_client=proxy_client)
     prompt_template = """
-    You are a helpful advisor. Context related to the prompt is provided.
-    Please answer it by referring to the chat history, but also referring to the following context.
+    You are a technical advisor. You should respond with reference to the context and Chat History.
+    If a user visits you in English, please reply in English, and if a user visits you in Japanese, please reply in Japanese.
+    Context:
     ```
     {context}
     ```
