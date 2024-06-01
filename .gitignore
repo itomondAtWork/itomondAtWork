@@ -16,3 +16,4 @@ data
 *.log
 *.sqlite3
 src/test.ipynb
+Chatbot_flask
