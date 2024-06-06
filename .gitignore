@@ -17,3 +17,6 @@ data
 *.sqlite3
 src/test.ipynb
 Chatbot_flask
+lib
+bin
+pyvenv.cfg
