@@ -15,11 +15,14 @@ data
 # その他の無視したいファイルやディレクトリ
 *.log
 *.sqlite3
-src/test.ipynb
-Chatbot_flask
-lib
-bin
-pyvenv.cfg
-share
+*.cfg
+
 .devcontainer
 .vscode
+
+test.ipynb
+lib
+share
+include
+bin
+etc
