@@ -21,8 +21,8 @@ data
 .vscode
 
 test.ipynb
-lib
-share
-include
-bin
-etc
+Chatbot/lib
+Chatbot/share
+Chatbot/include
+Chatbot/bin
+Chatbot/etc
