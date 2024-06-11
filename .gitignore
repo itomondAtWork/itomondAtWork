@@ -21,3 +21,5 @@ lib
 bin
 pyvenv.cfg
 share
+.devcontainer
+.vscode
