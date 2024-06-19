@@ -1,0 +1,16 @@
+applications:
+- name: streamlit-chatbot
+  memory: 1G
+  instances: 1
+  buildpacks:
+    - python_buildpack
+  env:
+    AICORE_AUTH_URL: https://example.com
+    AICORE_CLIENT_ID: your_client_id
+    AICORE_CLIENT_SECRET: your_client_secret
+    HANA_DB_ADDRESS: your_hana_db_address
+    HANA_DB_PORT: your_hana_db_port
+    HANA_DB_USER: your_hana_db_user
+    HANA_DB_PASSWORD: your_hana_db_password
+    EMBEDDING_DEPLOYMENT_ID: your_embedding_deployment_id
+    LLM_DEPLOYMENT_ID: your_llm_deployment_id
