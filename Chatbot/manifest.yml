@@ -1,9 +1,0 @@
-applications:
-- name: streamlit-chatbot
-  memory: 1G
-  instances: 1
-  buildpacks:
-    - python_buildpack
-  services:
-    - myhanadb
-    - my-credentials
