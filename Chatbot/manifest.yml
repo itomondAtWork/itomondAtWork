@@ -5,5 +5,5 @@ applications:
   buildpacks:
     - python_buildpack
   services:
-    - pyhana
+    - myhanadb
     - my-credentials

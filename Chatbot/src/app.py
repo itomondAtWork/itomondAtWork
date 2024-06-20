@@ -56,9 +56,12 @@ def main():
     display_interface(chain)
 
 def get_token():
-    auth_url = os.getenv('AICORE_AUTH_URL')
-    client_id = os.getenv('AICORE_CLIENT_ID')
-    client_secret = os.getenv('AICORE_CLIENT_SECRET')
+    env = AppEnv()
+    credentials = env.get_service(name='my-credentials').credentials
+
+    auth_url = credentials['AICORE_AUTH_URL']
+    client_id = credentials['AICORE_CLIENT_ID']
+    client_secret = credentials['AICORE_CLIENT_SECRET']
 
     token_url = f"{auth_url}/oauth/token"
     data = {
@@ -92,7 +95,8 @@ def connect_database(proxy_client):
         sslTrustStore=hana.credentials['certificate'],
     )
 
-    embeddings = OpenAIEmbeddings(deployment_id=os.getenv('EMBEDDING_DEPLOYMENT_ID'), proxy_client=proxy_client)
+    credentials = env.get_service(name='my-credentials').credentials
+    embeddings = OpenAIEmbeddings(deployment_id=credentials['EMBEDDING_DEPLOYMENT_ID'], proxy_client=proxy_client)
     db = HanaDB(
         connection=connection,
         embedding=embeddings,
@@ -101,7 +105,9 @@ def connect_database(proxy_client):
     return db
 
 def setup_chain(db, proxy_client):
-    llm = ChatOpenAI(deployment_id=os.getenv('LLM_DEPLOYMENT_ID'), proxy_client=proxy_client)
+    env = AppEnv()
+    credentials = env.get_service(name='my-credentials').credentials
+    llm = ChatOpenAI(deployment_id=credentials['LLM_DEPLOYMENT_ID'], proxy_client=proxy_client)
     prompt_template = """
     You are a helpful advisor. Context related to the prompt is provided.
     Please answer it by referring to the chat history, but also referring to the following context.
