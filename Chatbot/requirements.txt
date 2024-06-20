@@ -9,3 +9,4 @@ bs4==0.0.2
 generative-ai-hub-sdk==1.2.2
 altair==4.0.0
 setuptools==70.0.0
+cfenv==0.5.3

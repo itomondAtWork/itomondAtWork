@@ -1,0 +1,9 @@
+bin/
+data/
+docs/
+etc/
+include/
+lib/
+lib64/
+notebooks/
+share/

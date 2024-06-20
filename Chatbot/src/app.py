@@ -2,6 +2,7 @@ import os
 import requests
 import streamlit as st
 from hdbcli import dbapi
+from cfenv import AppEnv
 from gen_ai_hub.proxy.core.proxy_clients import get_proxy_client
 from gen_ai_hub.proxy.langchain.openai import ChatOpenAI, OpenAIEmbeddings
 from langchain.chains import ConversationalRetrievalChain
@@ -75,14 +76,22 @@ def get_token():
     return token
 
 def connect_database(proxy_client):
+    env = AppEnv()
+    hana_service = 'myhanadb'  # サービスの名前を指定します
+    hana = env.get_service(name=hana_service)
+
+    if hana is None:
+        raise Exception(f"Can't connect to HANA service '{hana_service}' – check service name?")
+
     connection = dbapi.connect(
-        address=os.getenv("HANA_DB_ADDRESS"),
-        port=os.getenv("HANA_DB_PORT"),
-        user=os.getenv("HANA_DB_USER"),
-        password=os.getenv("HANA_DB_PASSWORD"),
-        autocommit=True,
-        sslValidateCertificate=False,
+        address=hana.credentials['host'],
+        port=int(hana.credentials['port']),
+        user=hana.credentials['user'],
+        password=hana.credentials['password'],
+        encrypt='true',
+        sslTrustStore=hana.credentials['certificate'],
     )
+
     embeddings = OpenAIEmbeddings(deployment_id=os.getenv('EMBEDDING_DEPLOYMENT_ID'), proxy_client=proxy_client)
     db = HanaDB(
         connection=connection,
