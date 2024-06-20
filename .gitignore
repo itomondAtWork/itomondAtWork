@@ -27,4 +27,6 @@ Chatbot/include
 Chatbot/bin
 Chatbot/etc
 Chatbot/*.yml
+Chatbot/web
 Chatbot/.cfgnore
+Chatbot/xs-security.json

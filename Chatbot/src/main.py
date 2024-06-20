@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 from utils import set_custom_styles, display_interface
 from gen_ai_hub.proxy.core.proxy_clients import get_proxy_client
 from chatbot_engine import get_token, connect_database, setup_chain, initialize_session_state
-from recomend_engine import run_similarity_search
+from recommend_engine import run_similarity_search # type: ignore
 
 def main():
     set_custom_styles()
