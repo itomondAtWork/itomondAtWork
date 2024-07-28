@@ -16,10 +16,10 @@ data
 *.log
 *.sqlite3
 *.cfg
+*.devcontainer
+*.vscode
 
-.devcontainer
-.vscode
-
+# Chatbot関係
 test.ipynb
 Chatbot/lib
 Chatbot/share
@@ -30,3 +30,6 @@ Chatbot/*.yml
 Chatbot/web
 Chatbot/.cfgnore
 Chatbot/xs-security.json
+
+# NodeJS_practice関係
+NodeJS_practice/web-server/node_modules
