@@ -1,0 +1,6 @@
+{
+    "sap.app": {
+        "id": "ryota.mvcapp",
+        "type": "application"
+    }
+}
