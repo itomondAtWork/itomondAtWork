@@ -33,3 +33,6 @@ Chatbot/xs-security.json
 
 # NodeJS_practice関係
 NodeJS_practice/web-server/node_modules
+
+# Agent_Streamlit関係
+Agent_Streamlit/.env
