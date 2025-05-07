@@ -4,9 +4,17 @@ openai>=1.56.0
 google-cloud-aiplatform==1.61.0 # google
 boto3==1.35.76 # amazon
 langchain~=0.3.0 # langchain
+langgraph==0.3.30 # langgraph
 langchain-community~=0.3.0 # langchain
 langchain-openai>=0.2.14 # langchain
 langchain-google-vertexai==2.0.1 # langchain
+langchain-google-community==2.0.7
 langchain-aws==0.2.9 # langchain
 python-dotenv==1.1.0
 generative-ai-hub-sdk
+
+streamlit==1.44.1
+duckduckgo-search==8.0.0
+
+hdbcli==2.24.24
+langchain-hana==0.1.0
