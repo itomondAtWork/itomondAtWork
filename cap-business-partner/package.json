@@ -1,0 +1,26 @@
+{
+  "name": "cap-business-partner",
+  "version": "1.0.0",
+  "description": "A CAP application for managing business partners",
+  "scripts": {
+    "start": "cds run",
+    "build": "cds build",
+    "test": "cds test"
+  },
+  "engines": {
+    "node": "^18.0.0"
+  },
+  "dependencies": {
+    "@cap-js/sqlite": "^1.11.1",
+    "@sap/cds": "^8.9.7",
+    "@sap/cds-dk": "^9.4.3",
+    "@sap/xssec": "^4.0.0",
+    "@sap/xsenv": "^4.0.0"
+  },
+  "cds": {
+    "requires": {
+    "[production]": {
+      "auth": "mocked"}
+    }
+  }
+}

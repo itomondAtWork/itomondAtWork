@@ -1,0 +1,62 @@
+# macOS
+.DS_Store
+
+# VS Code
+.vscode/
+.history/
+
+# 依存関係・パッケージマネージャ
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# ビルド/配布物
+dist/
+build/
+out/
+target/
+coverage/
+
+# ログ
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 環境変数・秘密情報
+.env
+.env.*
+*.pem
+*.key
+
+# 一時ファイル
+.tmp/
+temp/
+*.tmp
+
+# CAP (SAP Cloud Application Programming Model)
+# DB/サービスの生成物
+srv/gen/
+db/gen/
+app/gen/
+gen/
+# SQLite などのローカルDB
+*.db
+*.hdb
+# CDS コンパイル成果物
+*.cds.js
+# mtx / マルチテナント関連の生成物
+.mt/*
+# Cloud Foundry/Deployment
+.mtar
+.mta/
+.cf/
+# npm/cdsキャッシュ
+.cds/
+.cds-test/
+
+# テスト出力
+.junit/
+.nyc_output/
