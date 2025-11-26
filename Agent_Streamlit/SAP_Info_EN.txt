@@ -1,0 +1,109 @@
+# SAP Corporate & Product Reference (English Edition)
+## Last updated: 13 May 2025
+
+---
+## 1. Company Overview
+SAP SE is a global leader in enterprise application software headquartered in Walldorf, Germany. It was founded in 1972 by five former IBM engineers, and its name derives from “Systemanalyse und Programmentwicklung” (Systems Analysis and Program Development). From the outset, SAP has delivered standard application software for real‑time business processing and has become the de‑facto global standard in Enterprise Resource Planning (ERP).
+
+As of 2025, SAP employs more than 105,000 people worldwide and serves over 476,000 customers in 120 countries. SAP Japan Co., Ltd. was established in 1992, with offices in Tokyo (HQ), Nagoya, Osaka, Fukuoka and other locations.
+
+---
+## 2. History Highlights
+* **1972**  — SAP Systemanalyse und Programmentwicklung founded; releases its first financial accounting system, RF  
+* **1992**  — SAP Japan established  
+* **1993**  — SAP R/3 (client/server ERP) announced, accelerating global adoption through open architecture  
+* **2004**  — Enterprise SOA strategy and the NetWeaver platform launched  
+* **2010**  — In‑memory database **SAP HANA** released  
+* **2015**  — Next‑generation ERP **SAP S/4HANA** announced, redesigned to run natively on HANA  
+* **2020**  — **RISE with SAP**, a subscription offer for cloud migration, introduced  
+* **2023**  — Generative‑AI roadmap revealed; intelligent assistant **Joule** to be embedded across the suite  
+* **2024**  — Cloud revenue reaches €17–17.3 billion (+25 % YoY); strategy rebranded as “AI‑first, Suite‑first”  
+* **2025 Q1** — SAP Business AI GA roll‑out begins; AI‑powered search and situation handling added to S/4HANA Cloud Public Edition  
+
+---
+## 3. Main Products & Services
+### 3.1 ERP & Finance
+- **SAP S/4HANA Cloud** — offered in *Public* and *Private* editions. Built natively on the in‑memory HANA database, it combines real‑time analytics with process automation.  
+  The 2025 release integrates Joule to automate postings, anomaly detection and error explanations.
+
+- **SAP ERP Central Component (SAP ECC)** — successor to R/3. Mainstream maintenance ends in December 2027; extended maintenance ends in December 2030.
+
+### 3.2 Business Platform
+- **SAP Business Technology Platform (SAP BTP)** — unifies application development, integration, data & analytics, and AI services. Offerings include Kyma, CAP, and Event Mesh.
+- **SAP Business AI** — umbrella for generative‑AI and ML services embedded across applications. As of Q1 2025, more than 25 use cases (demand forecasting, procurement matching, CRM recommendations, etc.) are GA.
+
+### 3.3 Line‑of‑Business Cloud
+| Domain | Solution | Key Functions |
+|--------|----------|---------------|
+| HR | **SAP SuccessFactors** | Talent management, payroll, diversity analytics |
+| Procurement | **SAP Ariba** | Sourcing, supplier management, networked procurement |
+| Travel & Expense | **SAP Concur** | Expense reporting, travel management, receipt AI parsing |
+| Customer | **SAP Customer Experience (CX)** | Commerce, marketing, service, CDP |
+| Analytics | **SAP Analytics Cloud** | BI dashboards, planning, forecasting, augmented analytics |
+| Sustainability | **SAP Sustainability Control Tower, Green Ledger** | ESG data aggregation, carbon accounting, reporting |
+
+---
+## 4. Technology Strategy & Architecture
+The 2025 roadmap follows the theme **“AI‑first, Suite‑first,”** consolidating data and metadata across the portfolio on BTP. It revolves around four pillars:
+
+1. **Joule** — generative‑AI assistant that combines user context with operational data  
+2. **Clean Core** — restricts extensibility to events & APIs to keep the ERP core upgradeable  
+3. **Green Ledger** — traces CO₂ emissions down to journal‑entry level across the supply chain  
+4. **Industry Cloud** — delivers best practices for more than 25 industries as cloud services
+
+---
+## 5. Financial & Performance Summary (EUR)
+| Fiscal Year | Total Revenue | Cloud Revenue | Operating Profit (Non‑IFRS) | Notes |
+|-------------|--------------|--------------|-----------------------------|-------|
+| 2023 | €30.1 bn | €13.7 bn | €6.5 bn | Currency impact −4 % |
+| 2024 *forecast* | €29.5 bn | €17‑17.3 bn | €7.6‑7.9 bn | RISE with SAP momentum |
+| 2025 Q1 | N/A | N/A | N/A | Business AI GA phase |
+
+---
+## 6. Major Deployments in Japan
+* **Nippon Express (NX Holdings)** — adopted S/4HANA for IFRS migration and shared services across 60+ entities, accelerating closing processes.  
+* **Toyota Motor** — built global supply‑chain integration on BTP, unifying vehicle lifecycle data.  
+* **Kao Corporation** — visualises Scope 3 emissions per product using Sustainability Control Tower.  
+* **Mitsubishi UFJ Financial Group** — consolidated procurement and expenses with Concur & Ariba, aligned SuccessFactors with a job‑based HR model.
+
+---
+## 7. Ecosystem & Partners
+* **Global SIs:** Accenture, Deloitte, IBM Consulting, PwC, Capgemini  
+* **Japan SIs:** NTT Data, Fujitsu, Hitachi Solutions, NEC Solution Innovators  
+* **Hyperscale Clouds:** Microsoft Azure (strategic “Embrace” program), Google Cloud, AWS  
+* **ISV Extensions:** Celonis (process mining), Tricentis (test automation), UiPath (RPA)
+
+---
+## 8. Market Position & Competitors
+* **ERP:** Oracle Fusion Cloud, Microsoft Dynamics 365, Infor CloudSuite  
+* **HCM:** Workday, Oracle HCM Cloud  
+* **Procurement:** Coupa, Ivalua  
+* **AI Platform:** ServiceNow Now Platform, Salesforce Einstein 1  
+
+Gartner’s *2024 Magic Quadrant for Cloud ERP* positions SAP as a Leader for both “ability to execute” and “completeness of vision,” with particularly strong ratings for manufacturing and professional‑services use cases.
+
+---
+## 9. Compliance & Security
+* Addressed a 2023 anti‑trust compliance case with a €200 m settlement  
+* Publishes monthly security advisories (“HotNews”); high‑priority notes are translated into Japanese  
+* Holds ISO/IEC 27001, 27017 and 27018 certifications; compliant with EU‑GDPR and Japan’s Personal Data Protection Act
+
+---
+## 10. Roadmap 2025–2027
+1. **Industry‑specific LLMs** — rolling out domain AI trained on industry data (manufacturing, healthcare, etc.)  
+2. **S/4HANA Cloud evolution** — extending Clean Core principles; all custom logic to run via BTP Event Mesh  
+3. **Automated Carbon Matching** — combining Green Ledger with blockchain to guarantee emission‑proof authenticity  
+4. **RISE with SAP Next** — bundling post‑migration services (FinOps, AIOps) as a standard offering
+
+---
+## Appendix: Glossary
+| Acronym | Description |
+|---------|-------------|
+| ERP | Enterprise Resource Planning |
+| HANA | High‑Performance Analytic Appliance |
+| BTP | Business Technology Platform |
+| IFRS | International Financial Reporting Standards |
+| ESG | Environmental, Social, Governance |
+| LLM | Large Language Model |
+| RPA | Robotic Process Automation |
+| CO₂ | Carbon dioxide |

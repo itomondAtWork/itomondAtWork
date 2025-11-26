@@ -1,0 +1,92 @@
+### 1. はじめに
+企業の分散化するアプリケーション群とデータをシームレスにつなぐ「Integration」は、SAP が掲げるインテリジェントでネットワーク化されたエンタープライズの土台であり、2025 年の SAP 戦略では「Clean Core & Composable Integration」がキーワードとなっています。本ドキュメントは、SAP Integration Suite を中心とした統合サービスの全貌と、ビジネス価値を最大化するための方法論を網羅的にまとめた実践ガイドです。
+
+### 2. ビジョンと戦略
+- **Everything‑to‑Everything (E2E) Connectivity:** SAP やサードパーティ SaaS、レガシーシステム、IoT デバイス間を API、イベント、メッセージで双方向接続し、リアルタイムデータ駆動型プロセスを実現。
+- **AI‑Augmented Integration:** 2025 年 6 月リリースから、生成 AI による iFlow 自動生成、スクリプト補完、テストデータ作成機能を標準搭載。
+- **Edge & Hybrid:** Edge Integration Cell によりプライベートクラウド／オンプレミスでも同一ランタイムを提供し、遅延やデータ主権要件を解決。
+- **Migration to Cloud:** SAP Process Orchestration (PO) サポート終了を見据え、2027 年までに 80% の PO 顧客を Integration Suite へ移行させるロードマップを公開。
+
+### 3. インテグレーションプラットフォームとサービス
+#### 3.1 SAP Integration Suite
+| 機能ブロック | 概要 |
+|--------------|------|
+| Cloud Integration (CI) | iFlow デザイナでローコード開発。3,500 以上のプリビルト「Integration Flow」コンテンツを提供 |
+| API Management | API ファブリック (2025 Q4) により一元的な API カタログとゲートウェイを提供 |
+| Event Mesh / Advanced Event Mesh | 大規模イベントルーティング。2025 年 6 月より LTS と Regular リリースモデルを導入 |
+| Integration Advisor | B2B/EDI マッピングを AI 推論で高速化 |
+| Open Connectors | Salesforce、ServiceNow など 350+ SaaS コネクタ |
+| Connectivity (RFC/OData/IDoc) | SAP NetWeaver、S/4HANA、BTP サービスとのネイティブ接続 |
+| Monitoring & Observability | OpenTelemetry 対応、Root‑Cause Analysis (RCA) ダッシュボード |
+
+#### 3.2 SAP BTP Connectivity & Data Services
+- **SAP Datasphere Replication Flow:** リアルタイム ETL と統合。
+- **Integration Suite Extension:** Joule Studio との連携で統合オーケストレーションを自動化。
+
+### 4. 主要ユースケース
+1. **プロセス統合** – S/4HANA と SuccessFactors をエンドツーエンドで統合し、Hire‑to‑Retire プロセスを自動化。
+2. **API ライフサイクル管理** – 外部パートナー向けに安全な API ポータルを提供し、サブスクリプション課金を実装。
+3. **イベント駆動購買** – Ariba の PO 作成イベントをトリガに倉庫管理システムへリアルタイム通知。
+4. **B2B/EDI** – ANSI X12 850 購買発注を iFlow で Edifact へマッピング。
+5. **レガシー近代化** – RFC 呼び出しを REST API へラッピングし、モバイルアプリから利用。
+6. **IoT／製造** – MQTT ベースの機器データを統合し、生産ライン停止を予測。
+
+### 5. 技術アーキテクチャ
+```
+┌──────────────────────────────────────────────┐
+│  Experience Layer (Fiori, Mobile, Partner)   │
+├──────────────────────────────────────────────┤
+│  API Fabric & Event Mesh (Async / Sync)      │
+├──────────────────────────────────────────────┤
+│  Cloud Integration Runtime & Edge Cell       │
+├──────────────────────────────────────────────┤
+│  Connectivity (Adapters, RFC, IDoc, OData)    │
+├──────────────────────────────────────────────┤
+│  Foundation (BTP, Kyma, Kubernetes, OBS)     │
+└──────────────────────────────────────────────┘
+```
+- **Exactly‑Once‑In‑Order (EOIO):** 2025 Update でメッセージ順序保証を強化。
+- **Clean Core:** 拡張と統合を外部化し、S/4HANA コアをアップグレードフリーに。
+
+### 6. 製品ロードマップ (2025–2027)
+| 時期 | マイルストーン |
+|------|--------------|
+| 2025 Q3 | iFlow AI Copilot (GA) – ナチュラル言語から統合フローを生成 |
+| 2025 Q4 | API Fabric 一般提供、GraphQL フェデレーション対応 |
+| 2026 H1 | B2B Integration Advisor 次世代エンジン、AI 生成マッピング |
+| 2026 H2 | Edge Integration Cell v2 – オフラインフェイルオーバー |
+| 2027 | 全サービスを Kubernetes ベース Micro Runtime に統合、マルチクラウド可搬性向上 |
+
+### 7. エコシステム & パートナーシップ
+- **ハイパースケーラ:** AWS PrivateLink による高セキュア接続、Azure Event Grid とのネイティブ連携。
+- **オープンソース:** AsyncAPI、OpenTelemetry コントリビューション。
+- **コンサル & SI:** Deloitte、Accenture、Capgemini が統合ファクトリモデルを提供。
+
+### 8. ガバナンス・セキュリティ
+- **Policy Templates:** OWASP API Security Top 10 に準拠したポリシーテンプレート。
+- **Zero Trust:** OAuth 2.1 / mTLS、API キー暗号化保管。
+- **監査 & コンフォーマンス:** ISO/IEC 27017、EU Digital Operational Resilience Act (DORA) 対応。
+
+### 9. 導入効果と ROI
+- プロジェクトテンプレート活用で平均 40% 開発工数削減。
+- プリビルト iFlow 利用企業は平均 6 か月で投資回収。
+- イベント駆動統合により発注処理遅延を 65% 削減 (顧客ベンチマーク 120 件)。
+
+### 10. 課題とリスク
+- **複雑性:** ハイブリッド運用で複数ランタイムが混在。
+- **レガシー依存:** RFC や IDoc の段階的廃止計画が不可欠。
+- **セキュリティ運用:** イベント駆動アーキテクチャのアクセス制御設計が新たな課題。
+
+### 11. 今後の展望 (2027–2030)
+インテグレーションは「Self‑Healing & Autonomous Integration」へ進化。生成 AI と強化学習により、障害検知から修復、テスト、デプロイまでが自動化。量子安全暗号やブロックチェーン連携により、グローバルトランザクションのリアルタイム決済が実現。
+
+---
+
+### 付録: 用語集
+| 略語 | 説明 |
+|------|------|
+| API | Application Programming Interface |
+| iFlow | Integration Flow |
+| EOIO | Exactly‑Once‑In‑Order |
+| EDI | Electronic Data Interchange |
+| Edge Cell | Edge Integration Cell |

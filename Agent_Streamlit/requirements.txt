@@ -13,8 +13,5 @@ langchain-aws==0.2.9 # langchain
 python-dotenv==1.1.0
 generative-ai-hub-sdk
 
-streamlit==1.44.1
-duckduckgo-search==8.0.0
-
 hdbcli==2.24.24
 langchain-hana==0.1.0

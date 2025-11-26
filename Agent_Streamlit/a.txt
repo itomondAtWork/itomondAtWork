@@ -1,0 +1,11 @@
+{'input': 'RISE with SAP の提供サービスと 2025 年時点のクラウド移行市場シェアは？',
+ 'output': 'RISE with SAPは企業のクラウド移行を支援するサブスクリプションサービスであり、2025年のクラウド移行サービス市場規模は約169億ドルで、年平均成長率27.8%で成長する見込みです。',
+ 'intermediate_steps': [
+    (AgentAction(tool='hana_vectorengine', tool_input='RISE with SAP の提供サービス', log='Thought: RISE with SAP の提供サービスについて調べ、2025年時点のクラウド移行市場シェアに関する情報を探す必要があります。最初にRISE with SAPの詳細を把握し、その後、クラウド移行市場に関する最新の予測データを探してみます。まずはRISE with SAPのサービスについて調査します。\n\nAction:\n```\n{\n  "action": "hana_vectorengine",\n  "action_input": "RISE with SAP の提供サービス"\n}\n```\n'),
+   'Gartner’s *2024 Magic Quadrant for Cloud ERP* positions SAP as a Leader for both “ability to execute” and “completeness of visi'),
+  (AgentAction(tool='google_search', tool_input='2025 年 クラウド移行 市場シェア', log='RISE with SAP の提供サービスについての情報は得られましたが、2025 年時点のクラウド移行市場シェアに関する情報を調べる必要があります。次に、クラウド移行市場シェアに関するデータを探すために、Googleで検索してみます。\n\nAction:\n```\n{\n  "action": "google_search",\n  "action_input": "2025 年 クラウド移行 市場シェア"\n}\n```\n\n'),
+   'Aug 25, 2023 ... また、企業がク..'),
+  (AgentAction(tool='google_search', tool_input='2025 クラウド移行市場シェア 予測', log='Thought: RISE with SAP の提供サービスに関する情報を得たので、次は2025年時点のクラウド移行市場シェアについての具体的なデータを見つける必要があります。前回の検索結果から、さらに詳細な情報を見つけられる可能性があるため、再度Google検索を行います。\n\nAction:\n```\n{\n  "action": "google_search",\n  "action_input": "2025 クラウド移行市場シェア 予測"\n}\n```\n\n'),
+   'Mar 7, 2025 ... ... 売上高シェ'),
+  (AgentAction(tool='google_search', tool_input='Cloud migration services market share forecast 2025', log='クラウド移行サービス市場シェアについての具体的なデータを見つけるために、さらに詳細な情報を探す必要があります。次に、特定のレポートやデータベースをターゲットにして、クラウド移行市場シェアの予測に関する情報を収集します。\n\nAction:\n```\n{\n  "action": "google_search",\n  "action_input": "Cloud migration services market share forecast 2025"\n}\n```\n\n'),
+   'Cloud Migration Services Market Size...')]}

@@ -37,22 +37,28 @@ temp/
 *.tmp
 
 # CAP (SAP Cloud Application Programming Model)
-# DB/サービスの生成物
 srv/gen/
 db/gen/
 app/gen/
 gen/
-# SQLite などのローカルDB
+
+# SQLite / DB
 *.db
+*.sqlite
 *.hdb
+db.sqlite
+
 # CDS コンパイル成果物
 *.cds.js
-# mtx / マルチテナント関連の生成物
+
+# mtx / マルチテナント関連
 .mt/*
+
 # Cloud Foundry/Deployment
 .mtar
 .mta/
 .cf/
+
 # npm/cdsキャッシュ
 .cds/
 .cds-test/
@@ -60,3 +66,27 @@ gen/
 # テスト出力
 .junit/
 .nyc_output/
+
+# Python関連
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# データディレクトリ
+data/
+
+# その他
+*.cfg
+
+# Chatbot関係
+test.ipynb
+Chatbot/lib
+Chatbot/share
+Chatbot/include
+Chatbot/bin
+Chatbot/etc
+Chatbot/*.yml
+Chat
